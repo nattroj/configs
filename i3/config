@@ -30,7 +30,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-for_window [class=".*"] border pixel 2
+exec_always --no-startup-id /home/nrojanasupya/Documents/configs/i3/scripts/runfocusurgent.sh
+
+for_window [class=".*"] border pixel 4
+
 gaps inner 10
 smart_gaps on
 
@@ -138,16 +141,17 @@ bindsym Ctrl+Shift+$mod+l exec --no-startup-id "~/.config/i3/scripts/workspaces.
 bindsym Ctrl+Shift+$mod+h exec --no-startup-id "~/.config/i3/scripts/workspaces.sh movetoprev && ~/.config/i3/scripts/workspaces.sh prev"
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+
+bindsym Ctrl+$mod+Shift+KP_1 move container to workspace number $ws1, workspace number 1
+bindsym Ctrl+$mod+Shift+KP_2 move container to workspace number $ws2, workspace number 2
+bindsym Ctrl+$mod+Shift+KP_3 move container to workspace number $ws3, workspace number 3
+bindsym Ctrl+$mod+Shift+KP_4 move container to workspace number $ws4, workspace number 4
+bindsym Ctrl+$mod+Shift+KP_5 move container to workspace number $ws5, workspace number 5
+bindsym Ctrl+$mod+Shift+KP_6 move container to workspace number $ws6, workspace number 6
+bindsym Ctrl+$mod+Shift+KP_7 move container to workspace number $ws7, workspace number 7
+bindsym Ctrl+$mod+Shift+KP_8 move container to workspace number $ws8, workspace number 8
+bindsym Ctrl+$mod+Shift+KP_9 move container to workspace number $ws9, workspace number 9
+bindsym Ctrl+$mod+Shift+KP_0 move container to workspace number $ws10, workspace number 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -181,17 +185,34 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-mode "apps" {
+mode "execute" {
 	bindsym b exec "i3-msg mode default && vivaldi-stable"
-	bindsym v exec --no-startup-id exec "i3-msg mode default && pavucontrol"
-	bindsym w exec "i3-msg mode default && virt-manager"
+	bindsym p exec "i3-msg mode default && vivaldi-stable --incognito"
+	bindsym s exec "i3-msg mode default && pavucontrol"
+	bindsym w exec "i3-msg mode default && ~/Documents/scripts/windows.sh"
+	bindsym c exec "i3-msg mode default && code"
+	bindsym o exec "i3-msg mode default && slack"
+	bindsym t exec "i3-msg mode default && ~/Documents/configs/i3/scripts/focusurgent.sh"
 
 	bindsym l exec "i3-msg mode default && i3lock -i ~/Pictures/lockscreen/lockscreen.png" 
 	bindsym Ctrl+bracketleft mode "default"
 	bindsym Escape mode "default"
 }
 
-bindsym Ctrl+Shift+x mode "apps"
+bindsym Ctrl+Shift+x mode "execute"
+
+mode "workspace" {
+	bindsym $mod+1 move container to workspace number 1, workspace number 1, mode "default"
+	bindsym $mod+2 move container to workspace number 2, workspace number 2, mode "default"
+	bindsym $mod+3 move container to workspace number 3, workspace number 3, mode "default"
+	bindsym $mod+4 move container to workspace number 4, workspace number 4, mode "default"
+	bindsym $mod+5 move container to workspace number 5, workspace number 5, mode "default"
+
+	bindsym Ctrl+bracketleft mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym Ctrl+$mod+w mode "workspace"
 
 # bindsym $mod+r mode "resize"
 

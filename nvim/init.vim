@@ -1,12 +1,12 @@
 call plug#begin()
 Plug 'levelone/tequila-sunrise.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'https://github.com/MaxMEllon/vim-jsx-pretty.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/vim-airline/vim-airline.git'
 call plug#end()
-
 
 syntax on
 colorscheme tequila-sunrise
@@ -21,10 +21,6 @@ set relativenumber
 set splitright
 set splitbelow
 
-inoremap ( ()<Left>
-inoremap { {}<Left>
-inoremap " ""<Left>
-inoremap [ []<Left>
 nnoremap <C-N><C-N> :set relativenumber!<CR>
 nnoremap <C-N> :noh<CR>
 imap jk <Esc>
