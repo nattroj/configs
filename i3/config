@@ -188,31 +188,28 @@ mode "resize" {
 mode "execute" {
 	bindsym b exec "i3-msg mode default && vivaldi-stable"
 	bindsym p exec "i3-msg mode default && vivaldi-stable --incognito"
-	bindsym s exec "i3-msg mode default && pavucontrol"
+	bindsym s exec "i3-msg mode default && ~/Documents/configs/polybar/change_audio_output.sh 0"
+	bindsym h exec "i3-msg mode default && ~/Documents/configs/polybar/change_audio_output.sh 1"
 	bindsym w exec "i3-msg mode default && ~/Documents/scripts/windows.sh"
 	bindsym c exec "i3-msg mode default && code"
 	bindsym o exec "i3-msg mode default && slack"
-	bindsym t exec "i3-msg mode default && ~/Documents/configs/i3/scripts/focusurgent.sh"
 
-	bindsym l exec "i3-msg mode default && i3lock -i ~/Pictures/lockscreen/lockscreen.png" 
 	bindsym Ctrl+bracketleft mode "default"
 	bindsym Escape mode "default"
 }
 
 bindsym Ctrl+Shift+x mode "execute"
 
-mode "workspace" {
-	bindsym $mod+1 move container to workspace number 1, workspace number 1, mode "default"
-	bindsym $mod+2 move container to workspace number 2, workspace number 2, mode "default"
-	bindsym $mod+3 move container to workspace number 3, workspace number 3, mode "default"
-	bindsym $mod+4 move container to workspace number 4, workspace number 4, mode "default"
-	bindsym $mod+5 move container to workspace number 5, workspace number 5, mode "default"
+mode "power" {
+	bindsym p exec poweroff
+	bindsym r exec reboot
+	bindsym l exec "i3-msg mode default && i3lock -i ~/Pictures/lockscreen/lockscreen.png" 
 
 	bindsym Ctrl+bracketleft mode "default"
 	bindsym Escape mode "default"
 }
 
-bindsym Ctrl+$mod+w mode "workspace"
+bindsym Ctrl+Shift+p mode "power"
 
 # bindsym $mod+r mode "resize"
 

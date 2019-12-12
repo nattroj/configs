@@ -56,7 +56,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3
-modules-right = memory cpu eth temperature date time audioout powermenu
+modules-right = memory cpu eth temperature date time 
 
 tray-position = center
 tray-padding = 5
